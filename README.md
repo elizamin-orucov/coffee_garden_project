@@ -1,5 +1,5 @@
 ## Coffe Garden
-#### You can use the rent a cars project I made according to your wishes.
+#### You can use the coffee project I made as per your wishes.
 
 ## Description
 
