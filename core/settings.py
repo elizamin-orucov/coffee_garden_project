@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from datetime import timedelta
 from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -129,7 +130,7 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = "az"
 MODELTRANSLATION_LANGUAGES = ("az", "en")
 
 
-TIME_ZONE = 'Asia/Baku'
+TIME_ZONE = "Asia/Baku"
 
 USE_I18N = True
 
@@ -140,7 +141,7 @@ AUTH_USER_MODEL = "accounts.User"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 if DEBUG:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 else:
@@ -154,25 +155,37 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #         'rest_framework_simplejwt.authentication.JWTAuthentication',
+    #         "rest_framework.authentication.BasicAuthentication",
+    # )
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    )
+}
+
+# jwt permission
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": SECRET_KEY,
+    "VERIFYING_KEY": None,
+    "AUTH_HEADERS_TYPES": ("JWT",),
+    "USER_ID_FIELDS": "id",
+    "USER_ID_CLAIM": "user_id",
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    "TOKEN_TYPE_CLAIM": "token_type",
+}
+
+
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 
-# REST_FRAMEWORK = {
-#     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-#     # 'PAGE_SIZE': 1,
-#     # 'DEFAULT_AUTHENTICATION_CLASSES': (
-#     # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     # )
-#     # 'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-#     # 'DEFAULT_AUTHENTICATION_CLASSES': (
-#     #     'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     #     # 'rest_framework.authentication.TokenAuthentication',
-#     #     'rest_framework.authentication.SessionAuthentication'
-#     # )
-#
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#             'rest_framework_simplejwt.authentication.JWTAuthentication',
-#             "rest_framework.authentication.BasicAuthentication",
-#     )
-#
-# }

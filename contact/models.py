@@ -54,3 +54,17 @@ class ContactUs(DateMixin):
     class Meta:
         verbose_name = "message"
         verbose_name_plural = "Contact Us"
+
+
+class Subscriber(DateMixin):
+    email = models.EmailField(unique=True, max_length=150)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = "email"
+        verbose_name_plural = "Subscribers"
+
+
+

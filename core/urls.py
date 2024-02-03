@@ -7,7 +7,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("account/", include("accounts.api.urls")),
+    path("accounts/", include("accounts.api.urls")),
 ]
 
 # urlpatterns += i18n_patterns(

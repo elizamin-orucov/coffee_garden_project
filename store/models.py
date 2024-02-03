@@ -30,6 +30,7 @@ class Product(SlugMixin):
         discounted_price = self.price - discount_price
         return round(float(discounted_price), 2)
 
+
     def create_unique_slug(self, slug, index=0):
         new_slug = slug
         if index:

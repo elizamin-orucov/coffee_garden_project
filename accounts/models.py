@@ -80,7 +80,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         if not self.slug:
             self.slug = CodeGenerator.create_slug_shortcode(size=20, model_=self.__class__)
         if not self.logo:
-            default_logo_path = 'static/user/user.jpg'
+            default_logo_path = "static/user/user.jpg"
             self.logo.save("default_user_logo.jpg", open(default_logo_path, "rb"), save=False)
         return super(User, self).save(*args, **kwargs)
 
