@@ -317,7 +317,81 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
         return repr_
 
 
+class ProfileEditSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = User
+        fields = (
+            "email",
+            "name",
+            "surname",
+            "logo",
+            "mobile",
+            "gender"
+        )
+        extra_kwargs = {
+            "email": {"read_only": True}
+        }
+
+
+class ProfileDeleteSerializer(serializers.ModelSerializer):
+    uuid = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = User
+        fields = (
+            "uuid",
+            "email",
+        )
+        extra_kwargs = {
+            "email": {"read_only": True}
+        }
+
+    def get_uuid(self, obj):
+        uuid = urlsafe_base64_encode(smart_bytes(obj.id))
+        return uuid
+
+    def create(self, validated_data):
+        user = self.context.get("user")
+        user.activation_code = CodeGenerator().create_user_activation_code(
+            size=6, model_=User
+        )
+        user.save()
+        send_mail(
+            "Delete Account",
+            f"Your account delete code: {user.activation_code}",
+            settings.EMAIL_HOST_USER,
+            [user.email],
+            fail_silently=True
+        )
+        return user
+
+
+class ProfileDeleteCheckSerializer(serializers.ModelSerializer):
+    uuid = serializers.SerializerMethodField(read_only=True)
+    activation_code = serializers.CharField(required=True, write_only=True)
+
+    class Meta:
+        model = User
+        fields = (
+            "uuid",
+            "activation_code",
+        )
+
+    def validate(self, attrs):
+        user = self.instance
+        activation_code = attrs.get("activation_code")
+
+        if not user.activation_code == activation_code:
+            raise serializers.ValidationError({"error": "Wrong code."})
+        return super().validate(attrs)
+
+    def get_uuid(self, obj):
+        return urlsafe_base64_encode(smart_bytes(obj.id))
+
+    def update(self, instance, validated_data):
+        instance.delete()
+        return instance
 
 
 

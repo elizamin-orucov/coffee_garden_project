@@ -32,6 +32,8 @@ class UserAdmin(BaseUserAdmin):
                     "name",
                     "surname",
                     "password",
+                    "mobile",
+                    "gender",
                     "logo",
                 )
             },

@@ -6,7 +6,8 @@ from django.utils.http import urlsafe_base64_decode
 from rest_framework.permissions import IsAuthenticated
 from .serializer import (
     LoginSerializer, RegisterSerializer, ActivationSerializer, ResetPasswordSerializer,
-    ResetPasswordCheckSerializer, ResetPasswordCompleteSerializer, ChangePasswordSerializer
+    ResetPasswordCheckSerializer, ResetPasswordCompleteSerializer, ChangePasswordSerializer,
+    ProfileEditSerializer, ProfileDeleteSerializer, ProfileDeleteCheckSerializer,
 )
 
 
@@ -80,6 +81,41 @@ class ChangePasswordView(generics.UpdateAPIView):
 
     def get_object(self):
         return self.request.user
+
+
+class ProfileEditView(generics.UpdateAPIView):
+    queryset = User.objects.filter(is_active=True)
+    serializer_class = ProfileEditSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user
+
+
+class ProfileDeleteView(generics.CreateAPIView):
+    queryset = User.objects.filter(is_active=True)
+    serializer_class = ProfileDeleteSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data, context={"user": request.user})
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
+
+class ProfileDeleteCheckView(generics.UpdateAPIView):
+    queryset = User.objects.filter(is_active=True)
+    serializer_class = ProfileDeleteCheckSerializer
+    lookup_field = "uuid"
+
+    def get_object(self):
+        uuid = self.kwargs.get("uuid")
+        id_ = smart_str(urlsafe_base64_decode(uuid))
+        return User.objects.get(id=int(id_))
+
+
+
 
 
 

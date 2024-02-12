@@ -1,46 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
-    BaseUserManager,
     PermissionsMixin
 )
 from services.generator import CodeGenerator
-
-
-class MyUserManager(BaseUserManager):
-    def create_user(
-        self,
-        email,
-        name,
-        surname,
-        password=None,
-        is_active=True,
-        is_staff=False,
-        is_superuser=False
-    ):
-        if not email:
-            raise ValueError("Users must have an email address")
-        user = self.model(email=self.normalize_email(email))
-        user.set_password(password)
-        user.name = name
-        user.surname = surname
-        user.is_active = is_active
-        user.is_staff = is_staff
-        user.is_superuser = is_superuser
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, email, name=None, surname=None, password=None):
-        user = self.create_user(
-            email=self.normalize_email(email),
-            name=name,
-            surname=surname,
-            password=password,
-        )
-        user.is_staff = True
-        user.is_superuser = True
-        user.save(using=self._db)
-        return user
+from services.choices import GENDER_CHOICES
+from .managers import MyUserManager
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 def upload_to(instance, filename):
@@ -52,6 +18,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=250, blank=True, null=True)
     surname = models.CharField(max_length=250, blank=True, null=True)
     logo = models.ImageField(upload_to=upload_to, blank=True, null=True)
+    mobile = PhoneNumberField(blank=True, null=True)
+    gender = models.CharField(max_length=25, blank=True, null=True, choices=GENDER_CHOICES)
 
     slug = models.SlugField(unique=True)
     activation_code = models.CharField(max_length=6, blank=True, null=True)

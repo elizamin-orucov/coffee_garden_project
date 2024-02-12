@@ -37,6 +37,11 @@ RATING = (
     (5, '★★★★★'),
 )
 
+GENDER_CHOICES = (
+        ("Male", "Male"),
+        ("Female", "Female"),
+    )
+
 PAYMENT_METHOD_CHOICES = (
     ("Credit or Debit Card", "Credit or Debit Card"),
     ("Paypal", "Paypal"),
