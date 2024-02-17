@@ -358,8 +358,8 @@ class ProfileDeleteSerializer(serializers.ModelSerializer):
         )
         user.save()
         send_mail(
-            "Delete Account",
-            f"Your account delete code: {user.activation_code}",
+            "Coffee Garden",
+            f" Delete Account\nYour account delete code: {user.activation_code}",
             settings.EMAIL_HOST_USER,
             [user.email],
             fail_silently=True

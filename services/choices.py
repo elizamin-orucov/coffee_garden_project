@@ -18,10 +18,6 @@ SPACE_CHOICES = (
     ("Workspace", "Workspace")
 )
 
-PROMO_CODE_STATUS_CHOICES = (
-    ("Active", "Active"),
-    ("No active", "No active"),
-)
 
 EVENTS_STATUS_CHOICES = (
     ("Upcoming", "Upcoming"),
@@ -47,3 +43,17 @@ PAYMENT_METHOD_CHOICES = (
     ("Paypal", "Paypal"),
     ("Cash on Delivery (COD)", "Cash on Delivery (COD)"),
 )
+
+DISCOUNT_CHOICES = (
+    (5, "5% off"),
+    (10, "10% off"),
+    (15, "15% off"),
+    (20, "20% off"),
+    (25, "25% off"),
+    (30, "30% off"),
+    (40, "40% off"),
+    (50, "50% off"),
+    (60, "60% off"),
+    (70, "70% off"),
+)
+

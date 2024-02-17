@@ -46,10 +46,11 @@ LOCAL_APPS = [
 THIRD_PARTY_APPS = [
     "phonenumber_field",
     "django_countries",
+    "django_filters",
     "rest_framework",
-    "django_cleanup",
     "ckeditor",
     "mptt",
+    "django_cleanup.apps.CleanupConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS

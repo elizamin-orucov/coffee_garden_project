@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 from services.generator import CodeGenerator
 from django.contrib.auth import get_user_model
 from services.mixin import SlugMixin, DateMixin
-from services.choices import PRODUCT_STATUS_CHOICES, PROMO_CODE_STATUS_CHOICES
+from services.choices import PRODUCT_STATUS_CHOICES, DISCOUNT_CHOICES
 
 
 User = get_user_model()
@@ -18,7 +18,7 @@ class Product(SlugMixin):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     price = models.FloatField()
     size = models.CharField(max_length=150, blank=True, null=True)
-    discount_interest = models.IntegerField(blank=True, null=True)
+    discount_interest = models.IntegerField(blank=True, null=True, choices=DISCOUNT_CHOICES)
     status = models.CharField(max_length=50, choices=PRODUCT_STATUS_CHOICES)
 
     def __str__(self):
@@ -29,7 +29,6 @@ class Product(SlugMixin):
         discount_price = self.price * (self.discount_interest or 0) / 100
         discounted_price = self.price - discount_price
         return round(float(discounted_price), 2)
-
 
     def create_unique_slug(self, slug, index=0):
         new_slug = slug
@@ -68,7 +67,7 @@ class Coupon(DateMixin):
     user = models.ManyToManyField(User, blank=True)
     code = models.CharField(max_length=30)
     discount_rate = models.PositiveIntegerField()
-    status = models.CharField(max_length=10, choices=PROMO_CODE_STATUS_CHOICES, default="Active")
+    status = models.BooleanField(default=True)
 
     def __str__(self):
         return self.code
