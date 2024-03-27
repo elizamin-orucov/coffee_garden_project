@@ -38,7 +38,7 @@ class UserAdmin(BaseUserAdmin):
                 )
             },
         ),
-        ("Permissions", {"fields": ("is_active", "is_staff", "is_superuser")}),
+        ("Permissions", {"fields": ("groups", "user_permissions", "is_active", "is_staff", "is_superuser")}),
     )
     add_fieldsets = (
         (

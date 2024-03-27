@@ -17,7 +17,6 @@ class Product(SlugMixin):
     description = RichTextField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     price = models.FloatField()
-    size = models.CharField(max_length=150, blank=True, null=True)
     discount_interest = models.IntegerField(blank=True, null=True, choices=DISCOUNT_CHOICES)
     status = models.CharField(max_length=50, choices=PRODUCT_STATUS_CHOICES)
 
@@ -47,8 +46,8 @@ class Product(SlugMixin):
         return super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name_plural = "Produktlar"
-        verbose_name = "Produkt"
+        verbose_name_plural = "Products"
+        verbose_name = "product"
 
 
 class ProductImages(DateMixin):
@@ -59,8 +58,8 @@ class ProductImages(DateMixin):
         return self.product.name
 
     class Meta:
-        verbose_name_plural = "Produkt şəkilləri"
-        verbose_name = "Şəkil"
+        verbose_name_plural = "Product images"
+        verbose_name = "image"
 
 
 class Coupon(DateMixin):

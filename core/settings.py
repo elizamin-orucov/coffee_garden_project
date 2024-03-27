@@ -30,6 +30,7 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "drf_yasg",
 ]
 
 LOCAL_APPS = [
@@ -135,7 +136,7 @@ TIME_ZONE = "Asia/Baku"
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 AUTH_USER_MODEL = "accounts.User"
 
