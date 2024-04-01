@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 
 
 @receiver(post_save, sender=Order)
-def contact_us_signals(sender, instance, created, **kwargs):
+def track_order_create_signals(sender, instance, created, **kwargs):
     if created:
         TrackOrder.objects.create(
             order=instance

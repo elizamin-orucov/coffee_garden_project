@@ -2,8 +2,6 @@ from rest_framework import serializers
 from ..models import Product, ProductImages
 from base.api.serializer import CategorySerializer
 from reviews.api.serializer import ReviewSerializer
-from django.db.models import IntegerField, F
-from django.db.models.functions import Coalesce
 
 
 class ProductImageSerializer(serializers.ModelSerializer):

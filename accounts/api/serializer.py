@@ -1,11 +1,11 @@
-from rest_framework import serializers
-from django.contrib.auth import get_user_model, authenticate
-from rest_framework_simplejwt.tokens import RefreshToken
-from services.generator import CodeGenerator
-from django.core.mail import send_mail
 from django.conf import settings
-from django.utils.http import urlsafe_base64_encode
+from rest_framework import serializers
+from django.core.mail import send_mail
+from services.generator import CodeGenerator
 from django.utils.encoding import smart_bytes
+from django.utils.http import urlsafe_base64_encode
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth import get_user_model, authenticate
 
 User = get_user_model()
 

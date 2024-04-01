@@ -57,3 +57,12 @@ DISCOUNT_CHOICES = (
     (70, "70% off"),
 )
 
+
+TRACK_ORDER_STATUS = (
+    ("Parcel is successfully delivered", "Parcel is successfully delivered"),
+    ("Parcel is out for delivery", "Parcel is out for delivery"),
+    ("Parcel is received at delivery Branch", "Parcel is received at delivery Branch"),
+    ("Parcel is in transit", "Parcel is in transit"),
+    ("Sender has shipped your parcel", "Sender has shipped your parcel"),
+    ("Sender is preparing to ship your order", "Sender is preparing to ship your order"),
+)

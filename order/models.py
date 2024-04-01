@@ -3,6 +3,7 @@ from services.mixin import DateMixin
 from store.models import Coupon, Product
 from services.generator import CodeGenerator
 from django.contrib.auth import get_user_model
+from services.choices import TRACK_ORDER_STATUS
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -61,11 +62,7 @@ class OrderItem(DateMixin):
 
 class TrackOrder(DateMixin):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    successfully_delivered = models.BooleanField(default=False)
-    processed_at_delivery_center = models.BooleanField(default=False)
-    arrived_at_sorting_center = models.BooleanField(default=False)
-    shipment_en_route = models.BooleanField(default=False)
-    getting_ready = models.BooleanField(default=True)
+    status = models.CharField(max_length=70, choices=TRACK_ORDER_STATUS, default="Sender is preparing to ship your order")
 
     def __str__(self):
         return self.order.user.email

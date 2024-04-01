@@ -1,11 +1,11 @@
-from rest_framework import generics, filters
 from ..models import Product
 from .filters import ProductFilter
+from rest_framework import generics, filters
+from django.db.models.functions import Coalesce
+from services.pagination import CustomPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import F, IntegerField, Avg, FloatField
-from django.db.models.functions import Coalesce
 from .serializer import ProductListSerializer, ProductDetailSerializer
-from services.pagination import CustomPagination
 
 
 class ProductListView(generics.ListAPIView):
