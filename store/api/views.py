@@ -5,6 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import F, IntegerField, Avg, FloatField
 from django.db.models.functions import Coalesce
 from .serializer import ProductListSerializer, ProductDetailSerializer
+from services.pagination import CustomPagination
 
 
 class ProductListView(generics.ListAPIView):
@@ -15,6 +16,7 @@ class ProductListView(generics.ListAPIView):
         filters.OrderingFilter,
     )
     filterset_class = ProductFilter
+    pagination_class = CustomPagination
     ordering_fields = ("totalprice", "created_at")
 
     def get_queryset(self):
