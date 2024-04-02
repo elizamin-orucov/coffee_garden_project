@@ -49,7 +49,7 @@ class ContactUs(DateMixin):
     responsible = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  # staff who replied to the message
 
     def __str__(self):
-        return self.full_name
+        return f"Full name: {self.full_name} Subject: {self.subjects}"
 
     class Meta:
         verbose_name = "message"

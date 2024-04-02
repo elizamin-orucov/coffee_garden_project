@@ -38,6 +38,7 @@ LOCAL_APPS = [
     "wishlist",
     "reviews",
     "content",
+    "contact",
     "payment",
     "basket",
     "order",
