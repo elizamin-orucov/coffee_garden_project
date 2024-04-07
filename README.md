@@ -1,20 +1,6 @@
 ## Coffe Garden
-<div style="display: flex; align-items: center;">
-    <div style="flex: 1; margin-right: 20px;">
-        <img src="readme_config/images/image_coffee_garden.png" height="250">
-    </div>
-    <div style="flex: 1;">
-        <img src="readme_config/images/image_coffee_home.jpg" class="image" height="250">
-    </div>
-</div>
-<div style="display: flex; align-items: center;">
-    <div style="flex: 1; margin-right: 20px;">
-        <img src="readme_config/images/image_coffee_garden.png" height="250">
-    </div>
-    <div style="flex: 1;">
-        <img src="readme_config/images/image_coffee_home.jpg" class="image" height="250">
-    </div>
-</div>
+<img src="readme_config/images/image_coffee_garden.png" height="250">
+
 #### Coffee Garden project I made with Django Rest Framework
 
 ## Description
@@ -22,7 +8,7 @@
 <div style="display: flex; align-items: center;">
     <div style="flex: 1; margin-right: 20px;">
 <div class="container">
-    <div class="text" style="col-md-6">
+    <div class="text" style="flex: 1; margin-right: 20px;">
         <p>This project is a website created for selling coffee.
         Customers can view various coffee varieties,
         add them to their carts, place orders,
@@ -32,6 +18,7 @@
     </div>
 </div>
 </div>
+<img src="readme_config/images/image_coffee_home.jpg" class="image" height="250">
 </div>
 
 
