@@ -4,9 +4,11 @@
 #### Coffee Garden project I made with Django Rest Framework
 
 ## Description
-
-<div class="container" style="display:flex; align-items: center;">
-    <div class="col-md-" style="display: inline-block;">
+<link rel="stylesheet" type="text/css" href="readme_config/css/style.css">
+<div style="display: flex; align-items: center;">
+    <div style="flex: 1; margin-right: 20px;">
+<div class="container">
+    <div class="text">
         <p>This project is a website created for selling coffee.
         Customers can view various coffee varieties,
         add them to their carts, place orders,
@@ -14,7 +16,9 @@
         they can read our latest news from our special news section.
         They can also learn about the events that have occurred and will occur in the shop.</p>
     </div>
-    <img src="readme_config/images/image_coffee_home.jpg" class="image" height="250" style="display: inline-block;">
+</div>
+</div>
+<img src="readme_config/images/image_coffee_home.jpg" class="image" height="250">
 </div>
 
 
