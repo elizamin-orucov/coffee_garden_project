@@ -28,7 +28,7 @@ class SubscriberSerializer(serializers.ModelSerializer):
 
         # to prevent the same email from being re-registered
         if Subscriber.objects.filter(email=email).exists():
-            raise serializers.ValidationError({"error": "This email is now available"})
+            raise serializers.ValidationError({"error": "This email is now available."})
 
         return super().validate(attrs)
 
