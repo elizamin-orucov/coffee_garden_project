@@ -4,7 +4,7 @@
 #### Coffee Garden project I made with Django Rest Framework
 
 ## Description
-<link rel="stylesheet" type="text/css" href="readme_config/css/styles.css">
+<link rel="stylesheet" type="text/css" href="readme_config/css/style.css">
 
 <div class="container">
     <div class="text">
@@ -15,7 +15,7 @@
         they can read our latest news from our special news section.
         They can also learn about the events that have occurred and will occur in the shop.</p>
     </div>
-    <img src="readme_config/images//image_coffee_home.jpg" class="image">
+    <img src="readme_config/images/image_coffee_home.jpg" class="image">
 </div>
 
 
@@ -28,3 +28,18 @@ py manage.py migrate
 py manage.py createsuperuser
 py manage.py runserver
 ````
+
+<style>
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.image {
+    height: 250px;
+}</style>
