@@ -1,25 +1,12 @@
-## Coffe Garden
-<img src="readme_config/images/image_coffee_garden.png" height="250">
+## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coffee Garden project I made with Django Rest Framework
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="readme_config/images/image_coffee_garden.png" height="250">
 
-#### Coffee Garden project I made with Django Rest Framework
+### Coffee Garden
 
-## Description
-<link rel="stylesheet" type="text/css" href="readme_config/css/style.css">
-<div style="display: flex; align-items: center;">
-    <div style="flex: 1; margin-right: 20px;">
-<div class="container">
-    <div class="text" style="flex: 1; margin-right: 20px;">
-        <p>This project is a website created for selling coffee.
-        Customers can view various coffee varieties,
-        add them to their carts, place orders,
-        and leave ratings and comments. Additionally,
-        they can read our latest news from our special news section.
-        They can also learn about the events that have occurred and will occur in the shop.</p>
-    </div>
-</div>
-</div>
-<img src="readme_config/images/image_coffee_home.jpg" class="image" height="250">
-</div>
+
+| Description                                                                                                                                                                                                                                                                                                | Images                                                                                                                                                                          |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| This project is a website designed for coffee sales. Customers can browse various types of coffee, add them to their carts, place orders, leave ratings and reviews. They can track their orders from the order tracking section. Additionally, they can read our latest news from our custom news section | <img src="readme_config/images/image_coffee_home.jpg" alt="Coffee Home Image" width="500"> <img src="readme_config/images/track_order.jpg" alt="Coffee Home Image" width="250"> 
 
 
 ## Installation
