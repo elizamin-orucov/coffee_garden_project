@@ -48,7 +48,6 @@ class Order(DateMixin):
 class OrderItem(DateMixin):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, related_name='order_items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
-    price = models.FloatField()
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):

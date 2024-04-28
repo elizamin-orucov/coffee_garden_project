@@ -1,5 +1,6 @@
 from ..models import Basket
 from rest_framework import generics
+from .permission import BasketPermission
 from .serializer import BasketSerializer
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -34,7 +35,7 @@ class BasketCreateView(generics.CreateAPIView):
 
 
 class BasketEditView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, BasketPermission)
     serializer_class = BasketSerializer
     lookup_field = "id"
 

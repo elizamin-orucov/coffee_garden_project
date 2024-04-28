@@ -12,5 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Order)
+admin.site.register(TrackOrder)
+admin.site.register(ShippingMethod)
 
 

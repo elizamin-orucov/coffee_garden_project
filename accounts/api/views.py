@@ -34,18 +34,6 @@ class ActivationView(generics.UpdateAPIView):
         id_ = smart_str(urlsafe_base64_decode(uuid))
         return User.objects.get(id=id_)
 
-    def put(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data, instance=self.get_object())
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-    def patch(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data, instance=self.get_object())
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
 
 class ResetPasswordView(generics.CreateAPIView):
     queryset = User.objects.all()
