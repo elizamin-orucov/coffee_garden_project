@@ -394,4 +394,11 @@ class ProfileDeleteCheckSerializer(serializers.ModelSerializer):
         return instance
 
 
-
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "email",
+            "full_name",
+            "logo"
+        )

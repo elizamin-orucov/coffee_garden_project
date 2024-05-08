@@ -54,23 +54,46 @@ class TrackOrderSerializer(serializers.ModelSerializer):
         return TrackOrderStatusSerializer(status, many=True).data
 
 
+class OrderCreateSerializer(serializers.ModelSerializer):
 
-    # class Meta:
-    #     model = Order
-    #     fields = (
-    #         "first_name",
-    #         "last_name",
-    #         "country",
-    #         "city",
-    #         "address",
-    #         "phone",
-    #         "postal_code",
-    #         "coupon_discount",
-    #         "shipping_method",
-    #         "subtotal",
-    #         "total_paid"
-    #     )
-    #     extra_kwargs = {
-    #         "coupon_discount": {"write_only": True},
-    #     }
+    class Meta:
+        model = Order
+        fields = (
+            "id",
+            "first_name",
+            "last_name",
+            "email",
+            "country",
+            "city",
+            "address",
+            "phone",
+            "postal_code",
+            "coupon_discount",
+            "shipping_method",
+            "subtotal",
+            "total_paid"
+        )
+
+    def validate(self, attrs):
+        user = self.context.get("user")
+        basket_qs = user.basket_set.all()
+
+        if not basket_qs.exists():
+            raise serializers.ValidationError({"error": "Basket bosdur"})
+
+        return attrs
+
+    def create(self, validated_data):
+        user = self.context.get("user")
+        basket_qs = user.basket_set.all()
+        new_order = Order.objects.create(**validated_data)
+
+        for item in basket_qs:
+            OrderItem.objects.create(
+                order=new_order,
+                product=item.product,
+                quantity=item.quantity
+            )
+        basket_qs.delete()
+        return new_order
 

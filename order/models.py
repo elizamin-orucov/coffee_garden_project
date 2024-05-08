@@ -13,7 +13,7 @@ User = get_user_model()
 
 class Order(DateMixin):
     invoice_id = models.PositiveIntegerField(unique=True, null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='user_order')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="user_order")
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=270, blank=True)

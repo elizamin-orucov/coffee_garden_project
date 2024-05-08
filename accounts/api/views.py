@@ -8,6 +8,7 @@ from .serializer import (
     LoginSerializer, RegisterSerializer, ActivationSerializer, ResetPasswordSerializer,
     ResetPasswordCheckSerializer, ResetPasswordCompleteSerializer, ChangePasswordSerializer,
     ProfileEditSerializer, ProfileDeleteSerializer, ProfileDeleteCheckSerializer,
+    UserSerializer
 )
 
 
@@ -102,6 +103,14 @@ class ProfileDeleteCheckView(generics.UpdateAPIView):
         id_ = smart_str(urlsafe_base64_decode(uuid))
         return User.objects.get(id=int(id_))
 
+
+class GetUserView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user
 
 
 

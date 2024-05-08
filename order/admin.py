@@ -4,14 +4,15 @@ from .models import Order, OrderItem, TrackOrder, ShippingMethod
 
 class ItemsInline(admin.TabularInline):
     model = OrderItem
-    extra = 1
+    extra = 0
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("invoice_id", )
+    list_display = ("invoice_id", "email", "billing_status")
+    inlines = (ItemsInline,)
 
 
-admin.site.register(Order)
+admin.site.register(Order, OrderAdmin)
 admin.site.register(TrackOrder)
 admin.site.register(ShippingMethod)
 

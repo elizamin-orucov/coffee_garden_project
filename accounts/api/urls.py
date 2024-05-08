@@ -6,6 +6,7 @@ app_name = "accounts_api"
 urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
     path("register/", views.RegisterView.as_view(), name="register"),
+    path("get/user/", views.GetUserView.as_view(), name="get_request_user"),
     path("delete/", views.ProfileDeleteView.as_view(), name="delete_account"),
     path("edit/profile/", views.ProfileEditView.as_view(), name="profile_edit"),
     path("activation/<uuid>/", views.ActivationView.as_view(), name="activation"),

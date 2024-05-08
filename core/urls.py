@@ -12,6 +12,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("contact.api.urls")),
     path("base/", include("base.api.urls")),
+    path("order/", include("order.api.urls")),
     path("store/", include("store.api.urls")),
     path("basket/", include("basket.api.urls")),
     path("review/", include("reviews.api.urls")),
@@ -20,10 +21,6 @@ urlpatterns = [
     path("accounts/", include("accounts.api.urls")),
 ]
 
-# urlpatterns += i18n_patterns(
-#     # path('settings/', include('settings.urls')),
-#     path('', include('products.api.urls')),
-# )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
