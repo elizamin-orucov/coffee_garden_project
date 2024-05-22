@@ -44,6 +44,14 @@ PAYMENT_METHOD_CHOICES = (
     ("Cash on Delivery (COD)", "Cash on Delivery (COD)"),
 )
 
+ORDER_STATUS_CHOICES = (
+    ("Waiting to Payment", "Waiting to Payment"),
+    ("Processed", "Processed"),
+    ("Shipped", "Shipped"),
+    ("Delivered", "Delivered"),
+    ("Canceled", "Canceled"),
+)
+
 DISCOUNT_CHOICES = (
     (5, "5% off"),
     (10, "10% off"),

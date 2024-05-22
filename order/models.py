@@ -3,9 +3,9 @@ from services.mixin import DateMixin
 from store.models import Coupon, Product
 from services.generator import CodeGenerator
 from django.contrib.auth import get_user_model
-from services.choices import TRACK_ORDER_STATUS
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
+from services.choices import TRACK_ORDER_STATUS, ORDER_STATUS_CHOICES
 
 
 User = get_user_model()
@@ -22,11 +22,12 @@ class Order(DateMixin):
     city = models.CharField(max_length=150)
     phone = PhoneNumberField()
     postal_code = models.PositiveIntegerField()
-    coupon_discount = models.ForeignKey(Coupon, on_delete=models.SET_NULL, null=True, blank=True, related_name='coupon')
+    coupon_discount = models.ForeignKey(Coupon, on_delete=models.SET_NULL, null=True, blank=True, related_name="coupon")
     shipping_method = models.ForeignKey("order.ShippingMethod", on_delete=models.SET_NULL, null=True)
     subtotal = models.FloatField(null=True)
     total_paid = models.FloatField()
     billing_status = models.BooleanField(default=False)
+    status = models.CharField(max_length=50, choices=ORDER_STATUS_CHOICES, null=True)
 
     def __str__(self):
         return str(self.invoice_id)
